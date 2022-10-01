@@ -86,13 +86,6 @@ select {
     }
 }
 
-h1 {
-    margin-top: 40px;
-    font-family: system-ui, sans-serif;
-    text-align: center;
-    font-size: 32px;
-    color: aliceblue;
-}
 
 .todo_wrapper {
     border: 1px solid whitesmoke;
@@ -143,22 +136,7 @@ form {
     padding: 20px;
 }
 
-.item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 6px;
-    color: whitesmoke;
-    font-family: system-ui, sans-serif;
-    font-size: 28px;
-    font-weight: bold;
-    border-radius: 10px;
-    padding: 6px;
-}
 
-.item > figure > img {
-    width: 32px;
-}
 .cancel-task {
     cursor: pointer;
     background-color: transparent;
@@ -181,12 +159,7 @@ form {
     transition: .7s;
     background-color: darkred;
 }
-.todo_list-items > li {
-    font-size: 28px;
-}
-.todo_list-items > li > input {
-    height: 24px;
-}
+
 .todo_input::placeholder {
     opacity: 0.8;
     text-align: center;
@@ -220,9 +193,7 @@ form {
     box-shadow: rgba(50, 50, 93, 0.25) 0 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0 18px 36px -18px inset;
     background-color: lightgreen;
 }
-.remove {
-    cursor: pointer;
-}
+
 
 @media (max-width: 512px) {
     .todo_wrapper {
