@@ -47,7 +47,8 @@ body {
     line-height: 1.5;
     scroll-behavior: smooth;
     text-rendering: optimizespeed;
-    background-image: linear-gradient(to right, #141e30, #243b55);
+    background-image: linear-gradient(to right, #00b4db, #0083b0);
+    font-family: "Roboto", sans-serif;
 }
 
 ul[class],
@@ -86,117 +87,83 @@ select {
     }
 }
 
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: whitesmoke;
+}
 
 .todo_wrapper {
-    border: 1px solid whitesmoke;
-    position: absolute;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 25px 50px -12px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 24px;
-    margin: 60px auto 0;
-    padding: 0 20px;
-    min-height: 520px;
-    max-width: 620px;
-    width: 100%;
-    background-image: linear-gradient(to right, #00b4db, #0083b0);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    margin: 5% auto 0;
+    background-image: linear-gradient(to right, #141e30, #243b55);
+    border-radius: 20px;
+    max-width: 440px;
+    border: 1px solid black;
 }
-.todo_label-form {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-}
-.todo_input {
-    font-family: system-ui, sans-serif;
-    font-size: 18px;
+
+#tasks-list {
+    min-height: 340px;
+    max-width: 480px;
     text-align: center;
-    width: 100%;
-    height: 48px;
-    outline: none;
-    border-radius: 10px;
-    background-color: aliceblue;
-    border: 1px solid #000000;
-    box-shadow: rgba(17, 17, 26, 0.1) 0 4px 16px, rgba(17, 17, 26, 0.1) 0 8px 24px, rgba(17, 17, 26, 0.1) 0 16px 56px;
-}
-
-form {
-    margin-top: 30px;
-    padding-bottom: 30px;
-}
-.todo_tasks-wrapper {
-    margin: 30px auto 0;
-    width: 100%;
+    padding: 20px;
+    margin: 10px auto 0;
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    padding: 20px;
+    gap: 14px;
 }
-
-
-.cancel-task {
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    width: 40px;
-    border-radius: 10px;
-    transition: ease-out .5s;
-    padding: 3px;
+ul > li {
+    color: whitesmoke;
+    font-size: 20px;
+    font-weight: 600;
 }
 .item-task {
     display: flex;
     justify-content: space-between;
-    color: whitesmoke;
-    font-family: system-ui, sans-serif;
-    font-size: 28px;
-    font-weight: bold;
-
+    align-items: center;
 }
-.cancel-task:hover {
+.item-task > button {
+    border-radius: 50%;
+    border: 1px solid transparent;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: ease-out .5s;
+}
+
+.item-task > button:hover {
     transition: .7s;
     background-color: darkred;
 }
 
-.todo_input::placeholder {
-    opacity: 0.8;
+.input-wrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: 480px;
+    margin: 3% auto 0;
     text-align: center;
-    font-family: system-ui, sans-serif;
-    font-weight: bold;
-    font-size: 18px;
-    color: black;
-    transition: ease-in-out .5s;
+    padding: 0 20px 20px;
 }
-.todo_input:focus::placeholder {
-    color: transparent;
-    transition: .5s;
-}
-.todo_submit {
-    box-shadow: rgba(17, 17, 26, 0.1) 0 4px 16px, rgba(17, 17, 26, 0.1) 0 8px 24px, rgba(17, 17, 26, 0.1) 0 16px 56px;
+#tasks-add {
+    width: 60px;
+    border: 1px solid transparent;
+    background-color: whitesmoke;
     border-radius: 10px;
-    font-size: 30px;
-    border: 1px solid black;
-    background-color: aliceblue;
+    font-size: 28px;
     cursor: pointer;
-    padding: 0 30px;
-    font-family: system-ui, sans-serif;
     transition: ease-out .5s;
 }
-.todo_submit:hover {
-    box-shadow: rgba(50, 50, 93, 0.25) 0 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0 18px 36px -18px inset;
+#tasks-add:hover {
     transition: .7s;
-    background-color: lightgreen;
-}
-.todo_submit:active {
-    box-shadow: rgba(50, 50, 93, 0.25) 0 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0 18px 36px -18px inset;
-    background-color: lightgreen;
-}
+    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
 
-
-@media (max-width: 512px) {
-    .todo_wrapper {
-        width: 95%;
-    }
+}
+#tasks-text {
+    height: 46px;
+    width: 80%;
+    outline: none;
+    background-color: whitesmoke;
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+#tasks-text[placeholder] {
+    text-align: center;
 }

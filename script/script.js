@@ -2,69 +2,53 @@
 
 (() => {
 
-    const taskList = document.querySelector(".todo_tasks-wrapper");
-    const formTodo = document.querySelector(".control");
-    const inputTask = document.querySelector(".todo_input");
+  const el = (sel, par) => (par || document).querySelector(sel);
+  const elNew = (tag, prop) => Object.assign(document.createElement(tag), prop);
 
-    const taskKeeper = [];
-    let taskIdCounter = -1;
+  const elList = el("#tasks-list");
+  const elText = el("#tasks-text");
+  const elAdd = el("#tasks-add");
 
-    const data = JSON.parse(localStorage.getItem("tasks"));
+  const tasks = JSON.parse(localStorage.tasks ?? "[]");
 
-    const updateHtml = (taskObj) => {
-        const newLi = document.createElement("li");
-        newLi.innerHTML = `<li id="${taskObj.id}" class="item-task">
-            <span>${taskObj.task}</span>
-            <button class="cancel-task">
-                <img src="assets/todo-cancel.png" alt="Cancel">
-            </button>
-        </li>`;
-        taskList.append(newLi);
-    }
+  const taskRemove = (taskObj, elTask) => {
+    const idx = tasks.indexOf(taskObj);
+    tasks.splice(idx, 1);
+    localStorage.tasks = JSON.stringify(tasks);
+    elTask && elTask.remove();
+  };
 
-    const newTask = (info) => {
-        taskIdCounter += 1;
-        const taskObj = {
-            task: info,
-            id: taskIdCounter,
-        };
-        taskKeeper.push(taskObj);
-        localStorage.setItem("tasks", JSON.stringify(taskKeeper));
-        updateHtml(taskObj);
-    };
+  const taskAdd = (text) => {
+    const taskObj = { task: text };
+    tasks.push(taskObj);
+    localStorage.tasks = JSON.stringify(tasks);
+    taskInsert(taskObj);
+  };
 
-    formTodo.addEventListener("submit", event => {
-        event.preventDefault();
-        const info = inputTask.value.trim();
-        if(info.length !== 0) {
-            newTask(info);
-            inputTask.value = "";
-            inputTask.focus();
-        }
+  const taskInsert = (taskObj) => {
+    const elTask = elNew("li", {
+      className: "item-task",
+      innerHTML: `<span>${taskObj.task}</span>`
     });
-
-    if(data !== null) {
-        for (let item of data) {
-            updateHtml(item);
-        }
+    const elRemove = elNew("button", {
+      type: "button",
+      innerHTML: "&times;",
+      onclick() {
+      taskRemove(taskObj, elTask);
     }
-
-    taskList.addEventListener("click", (event) => {
-        for (let el of event.composedPath()) {
-            if (el.matches && el.matches("button.cancel-task")) {
-                let uniqueId = +(el.parentNode.getAttribute("id"));
-                for (let itemId of data) {
-                    if(itemId.id === uniqueId) {
-                        let getIndex = data.indexOf(itemId);
-                        data.splice(getIndex, 1);
-                        localStorage.setItem("tasks", JSON.stringify(data));
-                    }
-                }
-                el.parentNode.remove();
-            }
-        }
     });
+    elTask.append(elRemove);
+    elList.append(elTask);
+  };
 
+  elAdd.addEventListener("click", () => {
+    const info = elText.value.trim();
+    if (!info.length) return;
+    taskAdd(info);
+    elText.value = "";
+    elText.focus();
+  });
 
-
+  tasks.forEach(taskInsert);
+    
 })();

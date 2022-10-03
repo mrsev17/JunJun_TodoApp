@@ -7,22 +7,15 @@
     <link rel="stylesheet" href="css/stylesheet.css">
 </head>
 <body>
-
-    <div class="todo_wrapper">
-
-        <ul class="todo_tasks-wrapper">
-
-        </ul>
-
-        <form class="control" action="">
-            <label class="todo_label-form" for="task">
-                <input class="todo_input" id="task" type="text" placeholder="Enter new task" maxlength="30">
-                <input class="todo_submit" type="submit" value="+">
-            </label>
-        </form>
-
+<div class="todo_wrapper">
+    <h1>ToDo App</h1>
+    <ul id="tasks-list"></ul>
+    <div class="input-wrapper">
+        <input id="tasks-text" id="task" type="text" placeholder="Enter new task" maxlength="30">
+        <button id="tasks-add" type="button">+</button>
     </div>
 
+</div>
 <script src="script/script.js"></script>
 </body>
 </html>
