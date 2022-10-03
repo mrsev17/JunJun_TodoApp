@@ -104,7 +104,7 @@ h1 {
 }
 
 #tasks-list {
-    min-height: 340px;
+    min-height: 140px;
     max-width: 480px;
     text-align: center;
     padding: 20px;
